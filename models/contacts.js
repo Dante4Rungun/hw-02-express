@@ -1,10 +1,6 @@
 const fs = require('fs/promises')
 const path = require('path')
-
-const getMaxId = (data) => {
-  const idList = data.map(contact => contact.id)
-  return Math.max(...idList) + 1
-}
+const utils = require('../utils/utils')
 
 const listContacts = async () => {
   const contacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
@@ -26,7 +22,7 @@ const removeContact = async (contactId) => {
 const addContact = async (name, email, phone) => {
   const contacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
   const parsedContacts = JSON.parse(contacts)
-  const id = getMaxId(parsedContacts).toString()
+  const id = utils.getMaxId(parsedContacts).toString()
   parsedContacts.push({id: id, name: name, email: email, phone: phone})
   await fs.writeFile(path.join(__dirname, 'contacts.json'), JSON.stringify(parsedContacts))
   //console.log("+")
