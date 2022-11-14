@@ -20,7 +20,7 @@ const getContactById = async (contactId) => {
     const contacts = JSON.parse(jsonContacts)
     if (contacts.find(contact => contact.id === contactId) !== undefined)
         return utils.createResponse("success", "200", contacts.filter(contact => contact.id === contactId))
-    else return utils.createResponse("No content", "204", "No data was found")
+    else return utils.createResponse("No content", "204", "No contact was found with such id")
   }
   catch (err) {
     return utils.createResponse("500", "failure", err)
@@ -53,7 +53,7 @@ const addContact = async (name, email, phone) => {
     return utils.createResponse("200","success", parsedContacts)     
   }
   catch (err){
-    return utils.createResponse("500","failure",[])
+    return utils.createResponse("500","failure",err)
   }
 }
 

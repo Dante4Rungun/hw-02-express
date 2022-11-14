@@ -3,11 +3,11 @@ const getMaxId = (data) => {
   return Math.max(...idList) + 1
 }
 
-const createResponse = (status, code, contacts) => {
+const createResponse = (status, code, data) => {
   return response = {
     status: status,
     code: code,
-    contacts: contacts
+    data: data
   }
 }
 
