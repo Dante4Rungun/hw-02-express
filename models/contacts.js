@@ -18,7 +18,7 @@ const getContactById = async (contactId) => {
     const contacts = await utils.getContacts(CONTACTS_PATH)
     if (contacts.find(contact => contact.id === contactId) !== undefined)
         return utils.createResponse("success", "200", contacts.filter(contact => contact.id === contactId))
-    else return utils.createResponse("No content", "204", "No contact was found with such id")
+    else return utils.createResponse("Not found", "404", "No contact was found with such id")
   }
   catch (err) {
     return utils.createResponse("500", "failure", err)
