@@ -8,14 +8,8 @@ const {
 const router = express.Router()
 
 router.get('/', async (req, res, next) => {
-  const contacts =  await methods.listContacts()
-  res.json({ 
-    status: 'success',
-    code: 200,
-    data: {
-      contacts,
-    }
-   })
+  const response =  await methods.listContacts()
+  res.json(response)
 })
 
 router.get('/:contactId', async (req, res, next) => {
@@ -23,29 +17,17 @@ router.get('/:contactId', async (req, res, next) => {
   const response = await methods.getContactById(contactId)
   res.json(response)
 })
-//, 
+
 router.post('/', validate(validation.contact), async (req, res, next) => {
   const {name, email, phone } = req.body
-  const contacts = await methods.addContact(name, email, phone)
-  res.json({ 
-    status: 'success',
-    code: 200,
-    data: {
-      contacts,
-    }
-  })
+  const response = await methods.addContact(name, email, phone)
+  res.json(response)
 })
 
 router.delete('/:contactId', async (req, res, next) => {
   const { contactId } = req.params
-  const {status, code, contacts} = await methods.removeContact(contactId)
-  res.json({ 
-    status: status,
-    code: code,
-    data: {
-      contacts,
-    }
-  })
+  const response = await methods.removeContact(contactId)
+  res.json(response)
 })
 
 router.put('/:contactId', validate(validation.contact), async (req, res, next) => {

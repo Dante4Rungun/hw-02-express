@@ -1,9 +1,7 @@
 const fs = require('fs/promises')
 const path = require('path')
-const { isUndefined } = require('util')
 const utils = require('../utils/utils')
 
-//done
 const listContacts = async () => {
   try {
     const contacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
@@ -13,7 +11,7 @@ const listContacts = async () => {
     return utils.createResponse("500", "failure", err)
   }
 }
-//done
+
 const getContactById = async (contactId) => {
   try {
     const jsonContacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
@@ -26,7 +24,7 @@ const getContactById = async (contactId) => {
     return utils.createResponse("500", "failure", err)
   }
 }
-//done
+
 const removeContact = async (contactId) => {
   try {
     const jsonContacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
@@ -42,7 +40,7 @@ const removeContact = async (contactId) => {
     return utils.createResponse("500", "failure", err)
   }
 }
-//done
+
 const addContact = async (name, email, phone) => {
   try {
     const contacts = await fs.readFile(path.join(__dirname, 'contacts.json'))
