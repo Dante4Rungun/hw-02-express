@@ -9,32 +9,33 @@ const router = express.Router()
 
 router.get('/', async (req, res, next) => {
   const response =  await methods.listContacts()
-  res.json(response)
+  res.status(response.status).json(response.data)
 })
 
 router.get('/:contactId', async (req, res, next) => {
   const { contactId } = req.params
   const response = await methods.getContactById(contactId)
-  res.json(response)
+  res.status(response.status).json(response.data)
 })
 
 router.post('/', validate(validation.contact), async (req, res, next) => {
-  const {name, email, phone } = req.body
+  const { name, email, phone } = req.body
+  console.log(name)
   const response = await methods.addContact(name, email, phone)
-  res.json(response)
+  res.status(response.status).json(response.data)
 })
 
 router.delete('/:contactId', async (req, res, next) => {
   const { contactId } = req.params
   const response = await methods.removeContact(contactId)
-  res.json(response)
+  res.status(response.status).json(response.data)
 })
 
 router.put('/:contactId', validate(validation.contact), async (req, res, next) => {
   const { contactId } = req.params
   const { name, email, phone } = req.body
-  const resonse = await methods.updateContact(contactId, name, email, phone)
-  res.json(resonse)
+  const response = await methods.updateContact(contactId, name, email, phone)
+  res.status(response.status).json(response.data)
 })
 
 module.exports = router

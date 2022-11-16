@@ -10,12 +10,15 @@ const getContacts = async (path) => {
   return JSON.parse(contacts)
 }
 
-const createResponse = (status, code, data) => {
-  return response = {
+const createResponse = (status, data, isMessage = false) => {
+  const response = {
     status: status,
-    code: code,
-    data: data
+    data: {
+      
+    }
   }
+  isMessage === true ? response.data = {message: data} : response.data = {contacts: data}
+  return response
 }
 
 module.exports = {
