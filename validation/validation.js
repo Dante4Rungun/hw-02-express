@@ -3,8 +3,8 @@ const Joi = require("@hapi/joi");
 exports.contact = Joi.object()
   .keys({
     name: Joi.string()
-        .min(3)
-        .max(50)
+        .min(2)
+        .max(30)
         .required()
         .messages({
             'string.base': `name should be a type of text`,
@@ -14,7 +14,8 @@ exports.contact = Joi.object()
         }),
     email: Joi.string()
         .email()
-        .min(8)
+        .min(6)
+        .max(50)
         .required()
         .messages({
             'string.base': `email should be a type of text`,
@@ -33,5 +34,10 @@ exports.contact = Joi.object()
             'string.min': `phone should have a minimum lenght of 10`,
             'string.max': `phone should have a minimum lenght of 12`,
             'any.required': `phone is required field`
+        }),
+    favorite: Joi.boolean()
+        .required()
+        .messages({
+            'boolean.base': 'favorite should be a type of boolean'
         })
   });
