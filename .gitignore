@@ -1,2 +1,4 @@
 node_modules/
 .env
+models/contacts.json
+models/contacts.js
