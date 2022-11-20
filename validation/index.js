@@ -1,6 +1,6 @@
-const add = require('./add')
-const favorite = require('./favorite')
-const update = require('./update')
+const add = require('./add').add
+const favorite = require('./favorite').favorite
+const update = require('./update').update
 
 module.exports = {
     add,
