@@ -7,7 +7,7 @@ const remove = async (req, res) => {
         return res.status(200).json(result)        
     }
     catch (err) {
-        return res.status(404).json("Not found")
+        return res.status(404).json({"message": "Not found"})
     }
 }
 

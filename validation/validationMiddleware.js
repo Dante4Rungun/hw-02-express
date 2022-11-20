@@ -1,12 +1,6 @@
 const utils = require('../utils/utils')
 
 exports.validate = (schema) => (req, res, next) => {
-  if (Object.keys(req.body).length === 0) {
-    res.status(400).json(
-      utils.createResponse("400", "missing fields", true).data
-    )
-  }
-  else {
   const {
     error
   } = schema.validate(req.body);
@@ -17,6 +11,5 @@ exports.validate = (schema) => (req, res, next) => {
       );
   } else {
     next();
-    }
   }
 };

@@ -7,7 +7,7 @@ const getById = async (req, res) => {
         res.status(201).json(result)
     }
     catch (err) {
-        res.status(404).json("Not found")   
+        res.status(404).json({"message": "Not found"})   
     }
 }
 

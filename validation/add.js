@@ -1,6 +1,6 @@
 const Joi = require("@hapi/joi");
 
-exports.contact = Joi.object()
+exports.add = Joi.object()
   .keys({
     name: Joi.string()
         .min(2)
@@ -36,7 +36,6 @@ exports.contact = Joi.object()
             'any.required': `phone is required field`
         }),
     favorite: Joi.boolean()
-        .required()
         .messages({
             'boolean.base': 'favorite should be a type of boolean'
         })
