@@ -1,11 +1,10 @@
 const Joi = require("@hapi/joi");
 
-exports.contact = Joi.object()
+exports.update = Joi.object()
   .keys({
     name: Joi.string()
-        .min(3)
-        .max(50)
-        .required()
+        .min(2)
+        .max(30)
         .messages({
             'string.base': `name should be a type of text`,
             'string.empty': `missing required name field`,
@@ -14,8 +13,8 @@ exports.contact = Joi.object()
         }),
     email: Joi.string()
         .email()
-        .min(8)
-        .required()
+        .min(6)
+        .max(50)
         .messages({
             'string.base': `email should be a type of text`,
             'string.empty': `missing required email field`,
@@ -26,12 +25,16 @@ exports.contact = Joi.object()
         .min(10)
         .max(12)
         .pattern(/^[0-9]+$/)
-        .required()
         .messages({
             'string.base': `phone should be a type of text`,
             'string.empty': `missing required phone field`,
             'string.min': `phone should have a minimum lenght of 10`,
             'string.max': `phone should have a minimum lenght of 12`,
             'any.required': `phone is required field`
+        }),
+      favorite: Joi.boolean()
+        .optional()
+        .messages({
+            'boolean.base': 'favorite should be a type of boolean'
         })
   });
