@@ -35,7 +35,8 @@ exports.add = Joi.object()
             'string.max': `phone should have a minimum lenght of 12`,
             'any.required': `phone is required field`
         }),
-    favorite: Joi.boolean()
+      favorite: Joi.boolean()
+        .optional()
         .messages({
             'boolean.base': 'favorite should be a type of boolean'
         })
