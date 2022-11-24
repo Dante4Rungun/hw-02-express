@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 const ctrlContact = require('../../controllers/contacts/index')
-const validation = require('../../validation/index')
-const {
-  validate
-} = require('../../validation/validationMiddleware')
+const validation = require('../../validation/contacts/index')
+const { validate } = require('../../validation/validationMiddleware')
+const authMiddleware = require('../../auth/authMiddleware')
+
+router.use(authMiddleware)
 
 router.get('/', ctrlContact.list)
 

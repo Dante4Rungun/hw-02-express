@@ -2,12 +2,13 @@ const Contact = require('../../models/contact')
 
 const update = async (req, res) => {
     const { contactId } = req.params
-    await Contact.findOneAndUpdate({ _id: contactId }, req.body, { new: true })
+    const { id: userId } = req.user
+    await Contact.findOneAndUpdate({ _id: contactId, owner: userId }, req.body, { new: true })
         .then(obj => {
-            res.status(200).json(obj)
+            obj === null ? res.status(404).json({ "message":"Not found" }) : res.status(200).json(obj)
         }) 
         .catch(err => {
-            res.status(404).json({ "message": "Not found" })
+            res.status(404).json({ "message":"Not found" })
         })
 }
 
