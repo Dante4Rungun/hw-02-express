@@ -2,7 +2,7 @@ const Contact = require('../../models/contact')
 
 const update = async (req, res) => {
     const { contactId } = req.params
-    await Contact.findOneAndUpdate({ _id: contactId }, req.body, { upsert: true })
+    await Contact.findOneAndUpdate({ _id: contactId }, req.body, { new: true })
         .then(obj => {
             res.status(200).json(obj)
         }) 
