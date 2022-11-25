@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.0/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="file" name="image" multiple>
+        <button type="submit">Upload file</button>
+    </form>
+    <script>
+        const form = document.createElement("form")
+        
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const formData = new FormData()
+            formData.append('image', formData)
+
+            axios.post("http://localhost:3000/api/files", formData).catch(err => {
+                console.error("got error: ",e)
+            })
+        })
+    </script>
+</body>
+</html>

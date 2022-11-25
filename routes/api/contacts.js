@@ -3,8 +3,8 @@ const router = express.Router()
 
 const ctrlContact = require('../../controllers/contacts/index')
 const validation = require('../../validation/contacts/index')
-const { validate } = require('../../validation/validationMiddleware')
-const authMiddleware = require('../../auth/authMiddleware')
+const { validate } = require('../../middlewares/validation')
+const authMiddleware = require('../../middlewares/auth')
 
 router.use(authMiddleware)
 
