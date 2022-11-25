@@ -13,6 +13,8 @@ const authMiddleware =  async (req, res, next) => {
                 res.status(401).json({ "message": "Not authorized" })
             if (!user.token)
                 res.status(401).json({ "message": "Not authorized" })
+            if (token !== user.token) 
+                res.status(401).json({ "message": "Not authorized" })
             req.user = user
             req.token = token
             next()
