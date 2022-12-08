@@ -12,7 +12,11 @@ const login = async (req, res) => {
         
     if (!await bctypt.compare(password, user.password)) 
         return res.status(401).json({"message":"Email or password is wrong"})
-        
+    
+    if (user.verify === false) {
+        return res.status(401).json({"message":"Email is not verified"})
+    }
+    
     const payload = {
         id: user.id,
         email: user.email,

@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bctypt = require('bcrypt');
-const { func } = require('joi');
 
 const userSchema = new Schema({
   password: {
@@ -18,12 +17,20 @@ const userSchema = new Schema({
     default: "starter"
   },
   avarar: String,
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, 'Verify token is required'],
+  },
   token: String    
 },
   { versionKey: false, timestamps: true },
 )
 
-userSchema.pre('save', async function(){
+userSchema.pre('save', async function() {
   if (this.isNew)
     this.password = await bctypt.hash(this.password, 10)
 })
