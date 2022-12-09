@@ -20,7 +20,7 @@ const main = async (to, token) => {
         html: "<h1>Hello from nodemailer</h1>",
         text: `Please verify your email! 
         here is your verifictation link: 
-        auth/verify/${token}`
+        http://localhost:3000/api/users/verify/${token}`
     }
 
     const response = await transport.sendMail(email)

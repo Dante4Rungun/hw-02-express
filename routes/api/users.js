@@ -20,7 +20,7 @@ router.patch('/subscription', authMiddleware, validate(validation.subscription),
 
 router.patch('/avatars', authMiddleware, upload, ctrlAvatars.resize, ctrlAvatars.rename, ctrlUser.avatars)
 
-router.get('/auth/verify/:verifyToken', ctrlUser.verification)
+router.get('/verify/:verifyToken', ctrlUser.verification)
 
 router.post('/verify', ctrlUser.verify)
 
